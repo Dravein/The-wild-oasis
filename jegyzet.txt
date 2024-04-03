@@ -1,0 +1,173 @@
+FONTOS:
+App_v1-be: a Styled Componentek magyarázása van.
+
+Vite Projekt csinálása lásd többinél.
+
+Syled Components
+ Telepítés
+    -npm i styled-components
+ VS Code extension: 
+    -vscode-styled-components -> Így a beléjük írt Css nem úgy jelenik meg mintha string lenne, illet működni fog az auto completion.
+
+Előny:
+  -<Button onClick={() => alert("Check in")}>Check in</Button> rögtön belehet írni az onClick propot mint a simma button elementbe lehetne, nem kell trükközni vele külön mint a tailwind-es megoldásnál mondjuk
+  -Meglévő componentet mint pé az <App> úgy kezdünk hogy az első div-ét mainét stb írjuk a stylet, amit Style-al kezdünk és a Componentet amit stylolunk végezzük. pl: <StyledApp>
+
+ Global Style csinálása:
+  -GlobalStyles.js-be.
+  -sibling Component-je kell legyen a App-nak.
+  -Ne fogadjon el childrent.
+  -Desing Tokenek használata: -color: var(--color-brand-50)
+  -css`` -> css syntaxot lehet normálisan írni a segítségével. (Heading.jsx-be)
+  -Lehet Propsokat átadni a Component-nek (Heading.jsx-be)
+  -as prop: Átállítja magát az element típusát is az átadottra pl(h3) <Heading as="h1">The Wild Oasis</Heading>
+  -Row.defaultProps -> Belehet állítani mit adjon át alapból a props-ba. És akkor lehet simán is hivatkozni rá <Row> al.
+
+  FONTOS: App_v1-be mentek ezek.
+  ____________________________________________________________________________________________________________________________
+
+React Router telepítése:
+ -npm i react-router-dom@6
+
+ Készítés:
+   -Data Loading feature-t nem használjuk, Route-kat a wordwise-hoz hasonlóan hozzuk létre.
+
+3rd Library-ból származó Component stílus szerkesztése styled Styled Components-el
+ const StyledLink = styled(NavLink)``
+
+React Icons:
+ -npm i react-icons
+
+Supabase:
+
+Supabase használata restful api-ként:
+
+   1. Change URL single quotes to double quotes.
+   2. I saw in QnA someone suggested to change -H to -header. No need to change.
+   3. Change / to ^
+   4. Command Prompt-ba kell használni.
+
+READ ALL ROW
+curl "https://sarshtdtbwtttyapakxp.supabase.co/rest/v1/cabins?select=*" ^
+-H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNhcnNodGR0Ynd0dHR5YXBha3hwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTEwMjE0MDIsImV4cCI6MjAyNjU5NzQwMn0.xNeFYlunDyS192Swkv2-Ef0KMWxpnRxs0R7om_yC6EM" ^
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNhcnNodGR0Ynd0dHR5YXBha3hwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTEwMjE0MDIsImV4cCI6MjAyNjU5NzQwMn0.xNeFYlunDyS192Swkv2-Ef0KMWxpnRxs0R7om_yC6EM"
+
+Access Policy beálíítása a Supbase táblák hozzáféréséhez:
+ API document
+  -Minden Public User hozzáfér a select row-hoz minden táblánkra
+
+ API document Introduction
+ Csatlakoztatása a Supabase-t az Apponkhuz.
+ -npm install @supabase/supabase-js
+ -supabase.js csinálása services mappa.
+
+ Storage Bucket:
+  -Fájlokat lehet rá feltölteni (Képek, Videók) -> Get URL megkapod URL-t is lehet rájuk hivatkozni (Feltölteni stb)
+
+
+React Query (Remote State Management és Data Fetching)
+ npm i @tanstack/react-query@4
+ React Query Devtools (Mint a Redux-nak ennek is van.)
+  npm i @tanstack/react-query-devtools@4 
+
+Dátom formázást segíti:
+ npm i date-fns
+
+Desging-hoz:
+ -npm i react-hot-toast
+ -<Toaster> komponen-be megy a kinézet és az App.jsx-ez kell tenni mint önzáró elemet.
+
+ React Hook Form: Form-ok kezelését teszi egyszerűbbé
+  -npm i react-hook-form@7
+
+  -<Input> elemeknek nem kell state-et csinálni külön mint eddig.
+  -Error validation
+  -Reusable From Row
+  -Validálásokat tudunk egyszerűen csinálni vele a form elementek-hez
+  -custom validátor funkciók (CreateCabinForm.jsx discount eleme.)
+
+Custom Hook-ok csinálása.
+
+Reusable Modal Window csinálása:
+ React Portal:
+  -createPortal
+  -React Portal: Máshova Renderel egy elemet a DOM-ba, mint ahogy a Component Tree-be megjelenik, viszont nem változtatja azt. (Modal Window-oknál hasznos)
+  -Reusability miatt is fontos hogy parent element, ne változtassa meg a működsését ha valaki fel akarja használni.
+
+  cloneElement(): cloneElement() visszatér a kapott Componenttel de úgy hogy hozzáadd egy propot.
+
+
+Reusable Table Component:
+
+
+Reusable Context Menu
+____________________________________________________________________________________________________________________________
+
+Filtering Cabin Data (Client Side filtering):
+ -SupaBase-ből leszedjük az Összes adatot a Table-ba és onnan filter-erjük ki ami kell (Client Side filtering)
+ -CabinTableOperations.jsx, apiCabins.js
+ -URL-ből történik a megvalósítás mert így Bookmarkable lesz a filter
+ -Fillter általános legyen mindenhonnan elérhező nem csak a Cabin-ból
+
+Fájlok feltöltése és törlése Supabase adatbázisba.
+ -Uploader.jsx-be meg van csinálva hogy a data mappában található fájlokat feltöltse a SupaBase-re (Le is töröl előtte mindent az adatbázisról), (annyi hogy a nationalID át kell írni a Supabase hogy ID nagy betű legyen.)
+
+Filtering Booking Data(API (Servert) Side filtering.)
+ -BookingTableOperations.jsx, apiBookings.js
+ -SupaBase filtereljük ki ami kell, és csak azokat az adatokat küldjük el a Client-nek amit már leszűrtűnk.
+ -Filter változásnál automatikus újra feccselés useBooking.js useQuery-ben a leírása.
+
+Reusbale Pagination:
+ -
+
+PreFethching:
+ -Olyan adatot előre le tölteni amit tudunk hogy szükség lesz a felhasználónak egy későbbi pillanatban.
+ -Pagination-nál ne töltsön ha másik Page-t kérünk. (Követező Page-t előre lekérjük.)
+ -React Query: Infinite Scroll, megoldás Prefetch helyett. Nem Próbáltuk itt ki.
+
+
+Authorization and Autentichation:
+
+
+Diagrammok:
+ npm i recharts@2
+
+Error Boundaries:
+ -React Hibakezelése -> React Renderelés közben elkapja a hibákat (Event handling, asszinkron műveltekre, useEffect stb nem vonatkozik.)
+ -NPM package-val történik mert az alap még mindig Class-Componentekkel van megírva.
+
+
+  npm install react-error-boundary
+
+Tovább fejleszétsi ötletek:
+- Új Booking-ok készítése (Új guest ha készül nem lehet most neki Booking-ot csinálni.)
+- Booking-okat lehessen szerkeszteni.
+- Check in és Check Out Times.
+- Cabin Price szerkeszthető legyen hiszen akármikor változhatnak.
+- Restaurant - ami egy Bill Valuet regisztrál ha a user étterembe megy és mindig hozzáadja a ratozáshoz.
+- Check Out-nál PDF invoice generálása, amit e-mailbe elküldhetünk a Usernek.
+
+Production Deployment:
+ -npm run build
+
+Netlify:
+ -Hostol React applikációkat.
+ -netlify.toml -> dist mappába csinálni (npm run build építi fel.) és Root mappába is beletenni.
+ -dist foldert droppolni a manuális fájl feltöltéshez.
+
+Git / Github
+-Branch
+-Staging Area
+-git init -> kezdetben hogy git képes legyen
+-git status -> Milyen fájlok vannak
+-git add -A -> Hozzáadja minden fájlt a Staging Area-hoz
+
+
+
+
+
+
+
+ 
+
+
