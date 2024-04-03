@@ -161,6 +161,11 @@ Git / Github
 -git init -> kezdetben hogy git képes legyen
 -git status -> Milyen fájlok vannak
 -git add -A -> Hozzáadja minden fájlt a Staging Area-hoz
+-git config --global user.email "damonic11@gmail.com" -> Email-t beállítottuk erre, hogy lehessen commitolni
+-git commit -m "Initial Commit" -> Snapshot-ot készít a jelenlegi állapotról a git add-al hozzáadott fájlokról (-m után az üzenet mi legyen a neve a snapshot-nak)
+
+git remote add origin https://github.com/Dravein/the-wild-oasis.git -> GitHub-hoz csatlakoztatjuk.
+git push -u origin master -> Github-ra töltjük a cuccokat a git-ről. origin(local) a remote-ra (master)
 
 
 
