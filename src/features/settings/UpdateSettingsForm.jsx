@@ -21,11 +21,12 @@ function UpdateSettingsForm() {
 
   if (isLoading) return <Spinner />;
 
-  function handleUpdate(e, field) {
+  function handleUpdate(e, field, previousValue) {
     const { value } = e.target;
     // console.log(value);
 
     if (!value) return;
+    if (value === String(previousValue)) return;
 
     updateSetting({ [field]: value });
   }
@@ -38,7 +39,7 @@ function UpdateSettingsForm() {
           id="min-nights"
           defaultValue={minBookingLength}
           //Ha elhagyod a mezőt amit szerkesztesz akkor hívódik meg.
-          onBlur={(e) => handleUpdate(e, "minBookingLength")}
+          onBlur={(e) => handleUpdate(e, "minBookingLength", minBookingLength)}
           disabled={isUpdating}
         />
       </FormRow>
@@ -47,7 +48,7 @@ function UpdateSettingsForm() {
           type="number"
           id="max-nights"
           defaultValue={maxBookingLength}
-          onBlur={(e) => handleUpdate(e, "maxBookingLength")}
+          onBlur={(e) => handleUpdate(e, "maxBookingLength", maxBookingLength)}
           disabled={isUpdating}
         />
       </FormRow>
@@ -56,7 +57,9 @@ function UpdateSettingsForm() {
           type="number"
           id="max-guests"
           defaultValue={maxGuestsPerBooking}
-          onBlur={(e) => handleUpdate(e, "maxGuestsPerBooking")}
+          onBlur={(e) =>
+            handleUpdate(e, "maxGuestsPerBooking", maxGuestsPerBooking)
+          }
           disabled={isUpdating}
         />
       </FormRow>
@@ -65,7 +68,7 @@ function UpdateSettingsForm() {
           type="number"
           id="breakfast-price"
           defaultValue={breakfastPrice}
-          onBlur={(e) => handleUpdate(e, "breakfastPrice")}
+          onBlur={(e) => handleUpdate(e, "breakfastPrice", breakfastPrice)}
           disabled={isUpdating}
         />
       </FormRow>

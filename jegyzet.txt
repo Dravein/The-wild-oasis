@@ -155,6 +155,9 @@ Netlify:
  -netlify.toml -> dist mappába csinálni (npm run build építi fel.) és Root mappába is beletenni.
  -dist foldert droppolni a manuális fájl feltöltéshez.
 
+Vercel
+ - -Hostol React applikációkat. Főleg Next.js-re lett tervezve. (Ugyan az fejlesztette)
+
 Git / Github
 -Branch
 -Staging Area
@@ -166,6 +169,19 @@ Git / Github
 
 git remote add origin https://github.com/Dravein/the-wild-oasis.git -> GitHub-hoz csatlakoztatjuk.
 git push -u origin master -> Github-ra töltjük a cuccokat a git-ről. origin(local) a remote-ra (master)
+
+FONTOS:
+Autentichation
+ -Ha SMTP-t kér mert változott a Subapase következőt kell tenni:
+
+ According to Supabase documentation from September of 26th no longer there will be Random signups or signups who are not authorised to your project organization however you can fix this by adding SMTP service in Authentication of Settings page, the easiest SMTP service according to me is Gmail because the only thing you have to do is make a gmail account related to project and make sure you turn on two factor authentication and get the less secured password from "App passwords" and add the email and that password to SMTP Email and password also don't forget about SMTP PORT which is 587 and SMTP Host which is smtp.gmail.com
+
+ Passwordok a felvett felhasználóknak:
+  asdf1234
+
+Oldal ha csak valami temp mail-al akarunk tesztelni.
+ -https://temp-mail.org/
+
 
 
 
